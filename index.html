@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>GOA</title>
+        <link href="https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap" rel="stylesheet">;
+        <link href="https://fonts.googleapis.com/css2?family=Baskervville&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Baskervville:ital@1&display=swap" rel="stylesheet">
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+        <style>
+            html{
+                scroll-behavior:smooth;
+            }
+            body{
+                margin:0;
+                padding:0;
+                background:black;
+            }
+            .introsection{
+                margin-top:-2vh;
+                width:100%;
+                height:100vh;
+                display:flex;
+                flex-direction:column;
+                justify-content:center;
+                align-items:center;
+                overflow:hidden;
+                position:relative;
+            }
+            .navfiller{
+                width:40%;
+                height:100%;
+                position:absolute;
+                background: rgba(101, 101, 101, 0.3); 
+                backdrop-filter: blur(12.5px);         
+                -webkit-backdrop-filter: blur(12.5px);
+                border-radius:100vh;
+            }
+            .intronavbtn{
+                background:transparent;
+                border:none;
+                color:white;
+                font-size:1.75vh;
+                font-family:baskervville;
+                cursor:pointer;
+                width:15vh;
+                height:6vh;
+                outline:none;
+                border-radius:10px;
+                margin-left:1.5vh;
+                margin-right:1.5vh;
+                opacity:0.55;
+                transition-duration:0.5s;
+            }
+            .intronavbtn:hover{
+                transition-duration:0.5s;
+                font-size:2vh;
+            }
+            .intronav{
+                color:white;
+                position:fixed;
+                z-index:1000;
+                font-size:3.25vh;
+                font-family:baskervville;
+                width:100%;
+                margin-top:3vh;
+                height:8vh;
+                display:flex;
+                justify-content:center;
+                align-items:center;
+            }
+            .centralimg{
+                width:100vw;
+                object-fit:cover;
+                height:100vh;
+                filter:brightness(1.2);
+            }
+            .filterup{
+                position:absolute;
+                bottom:0;
+                width:100%;
+                height:50%;
+                background: linear-gradient(to top, #121212 0%, transparent 100%);
+                z-index:1;
+            }
+            .filterright{
+                position:absolute;
+                left:0vh;
+                width:25%;
+                height:40vh;
+                background: linear-gradient(to right, #000000 0%, transparent 100%);
+                z-index:1;
+            }
+            .filterleft{
+                position:absolute;
+                right:0vh;
+                width:25%;
+                height:40vh;
+                background: linear-gradient(to left, #000000 0%, transparent 100%);
+                z-index:1;
+            }
+            .filterdown{
+                position:absolute;
+                width:100%;
+                height:100%;
+                background: linear-gradient(to bottom, #000000 0%, transparent 100%);
+                z-index:1;
+            }
+            .downloadbtn{
+                text-decoration:none;
+                position:absolute;
+                text-align:center;
+                bottom:10vh;
+                width:22.5vh;
+                height:6vh;
+                font-size:2vh;
+                font-family:bebas neue;
+                color:white;
+                border : 0.2vh solid white;
+                border-radius:1.5vh;
+                background:none;
+                z-index:1;
+                cursor:pointer;
+                display:flex;
+                justify-content:center;
+                align-items:center;
+                opacity:0.5;
+                transition-duration:0.5s;
+            }   
+            .downloadbtn:hover{
+                transition-duration:0.5s;
+                font-size:2.1vh;
+                color:black;
+                background:white;
+            }
+            .maintrainimg{
+                opacity:0.75;
+                width:75%;
+                height:75vh;
+                object-fit:cover;
+                border-radius:5vh;
+                filter:saturate(0) brightness(1);
+                cursor:pointer;
+                transition-duration:0.5s;
+            }
+            .maintrainimg:hover{
+                filter:saturate(1) brightness(1.3);
+                border-radius:0vh;
+                width:85%;
+                transition-duration:0.5s;
+            }
+            .traininfo{
+                position:absolute;
+                bottom:20.5vh;
+                width:65vw;
+                height:15vh;
+                border-radius:4.5vh;
+                display:flex;
+                flex-direction:row;
+                justify-content:center;
+                align-items:center;
+                background: rgba(168, 167, 167, 0.3); 
+                backdrop-filter: blur(12.5px);         
+                -webkit-backdrop-filter: blur(12.5px);
+                cursor:pointer;
+                transition-duration:0.4s;
+            }
+            .traininfo:hover{
+                transition-duration:0.4s;
+                width:62.5vw;
+                height:16vh;
+                background: rgba(168, 167, 167, 0.5); 
+                backdrop-filter: blur(12.5px);         
+                -webkit-backdrop-filter: blur(12.5px);
+            }
+            .trainblock{
+                margin-left:6.5vh;
+                margin-right:6.5vh;
+                display:flex;
+                flex-direction:column;
+                justify-content: center;
+                align-items:center;
+                opacity:0.85;
+            }
+            .trainheader{
+                color:#D5D5D5;
+                font-size:2.25vh;
+                font-family:bebas neue;
+            }
+            .traincontent{
+                color:white;
+                font-size:5vh;
+                font-family:bebas neue;
+            }
+            .traingalleryheader{
+                color:white;
+                font-size:7.5vh;
+                font-family:bebas neue;
+                margin-bottom:8vh;
+            }
+            .layer1{
+                display:flex;
+                flex-direction:row;
+            }
+            .layer1img{
+                width:25.5vw;
+                height:30vh;
+                object-fit:cover;
+                filter:saturate(0);
+                border-radius:6.5vh;
+                cursor:pointer;
+                transition-duration:0.5s;
+            }
+            .layer1img:hover{
+                transition-duration:0.5s;
+                width:31vw;
+                filter:saturate(1);
+            }
+            .layer2{
+                margin-top:5vh;
+                display:flex;
+                flex-direction:row;
+            }
+            .layer2img{
+                width:60vw;
+                height:60vh;
+                object-fit:cover;
+                filter:saturate(0);
+                border-radius:3.5vh;
+                cursor:pointer;
+                transition-duration:0.5s;
+            }
+            .layer2img:hover{
+                transition-duration:0.5s;
+                width:61vw;
+                filter:saturate(1);
+            }
+            .layer21{
+                margin-left:5vh;
+                display:flex;
+                flex-direction:column;
+            }
+            .layer21img{
+                width:20vw;
+                height:27.5vh;
+                object-fit:cover;
+                filter:saturate(0);
+                border-radius:3.5vh;
+                cursor:pointer;
+                transition-duration:0.5s;
+            }
+            .layer21img:hover{
+                transition-duration:0.5s;
+                width:21vw;
+                filter:saturate(1);
+            }
+            .allofthem{
+                margin-top:5vh;
+                width:80vw;
+                height:60vh;
+                object-fit:cover;
+                filter:saturate(0);
+                border-radius:6.5vh;
+                cursor:pointer;
+                transition-duration:0.5s;
+            }
+            .allofthem:hover{
+                transition-duration:0.5s;
+                width:81vw;
+                filter:saturate(1);
+            }
+            .horiz{
+                color:#4D4D4D;
+                writing-mode: vertical-rl;
+                text-orientation:upright;
+                font-size:3.75vh;
+                font-family:bebas neue;
+            }
+            .word{
+                margin-bottom:3vh;
+            }
+            .linehoriz{
+                width:0.1vh;
+                height:77.5vh;
+                background:#4D4D4D;
+                margin-right:2vh;
+                margin-bottom:2vh;
+            }
+            .l1{
+                margin-left:10vh;
+            }
+            .l1img{
+                width:24.5vw;
+                height:27.5vh;
+                object-fit:cover;
+                filter:saturate(0);
+                border-radius:5vh;
+                cursor:pointer;
+                transition-duration:0.5s;
+            }
+            .l1img:hover{
+                transition-duration:0.5s;
+                border-radius:10vh;
+                filter:saturate(1);
+            }
+            .l2{
+                margin-left:10vh;
+                margin-top:2vh;
+                display:flex;
+                flex-direction:row;
+            }
+            .l2img{
+                width:24.5vw;
+                height:47vh;
+                object-fit:cover;
+                filter:saturate(0);
+                border-radius:5vh;
+                cursor:pointer;
+                transition-duration:0.5s;
+            }
+            .l2img:hover{
+                transition-duration:0.5s;
+                border-radius:10vh;
+                filter:saturate(1);
+            }
+            .l21img{
+                width:24.5vw;
+                height:22vh;
+                object-fit:cover;
+                filter:saturate(0);
+                border-radius:5vh;
+                cursor:pointer;
+                transition-duration:0.5s;
+            }
+            .l21img:hover{
+                transition-duration:0.5s;
+                border-radius:10vh;
+                filter:saturate(1);
+            }
+            .mansionmainimg{
+                opacity:0.75;
+                width:80%;
+                height:80vh;
+                object-fit:cover;
+                border-radius:5vh;
+                filter:saturate(0) brightness(1);
+                cursor:pointer;
+                transition-duration:0.5s;
+            }
+            .mansionmainimg:hover{
+                filter:saturate(1) brightness(1.3);
+                border-radius:0vh;
+                width:100%;
+                transition-duration:0.5s;
+            } 
+            .videoholder{
+                display:flex;
+                justify-content:center;
+                align-items:center;
+                flex-direction:row;
+            }
+            .hoyvid{
+                width:100%;
+                object-fit:cover;
+                height:75vh;
+                filter:saturate(0);
+                transition-duration:0.3s;
+            }
+            .hoyvidcontainer{
+                width:65%;
+                height:75vh;
+            }
+            .hoyvidcontainer:hover video{
+                transition-duration:0.3s;
+                filter:saturate(1) brightness(1.25);
+            }
+            .playlisttitle{
+                color:white;
+                font-family:Bebas Neue;
+                font-size:6vh;
+                letter-spacing:0.2vh;
+            }
+            .playlist{
+                background:transparent;
+                width:30%;
+                height:75vh;
+                display:flex;
+                justify-content:center;
+                align-items:center;
+                flex-direction:column;
+                margin-left:2vh;
+            }
+            .hoyvids{
+                width:100%;
+                height:60vh;
+                margin-top:2vh;
+                overflow-y:scroll;
+                display:flex;
+                justify-content:flex-start;
+                align-items:center;
+                flex-direction:column;
+            }
+            .hoyvidformat{
+                margin-left:5vh;
+                width:100%;
+                height:20vh;
+                border-radius:30px;
+                margin-bottom:2vh;
+                display:flex;
+                justify-content:center;
+                align-items:center;
+                color:white;
+                font-family:Bebas Neue;
+                font-size:4vh;
+                filter:saturate(0);
+                transition-duration:0.5s;
+            }
+            .hoyvidformat:hover{
+                transition-duration:0.5s;
+                cursor:pointer;
+                filter:none;
+                background:black;
+            }
+            .hoythumb{
+                width:40%;
+                height:14.5vh;
+                object-fit:cover;
+                filter:saturate(0) brightness(1.2);
+                transition-duration:0.3s;
+            }
+            .hoythumb:hover{
+                transition-duration:0.3s;
+                filter:none;
+            }
+            .vidtext1{
+                word-wrap: break-word;
+                color:white;
+                font-family:Baskervville;
+                text-align:center;
+                font-size:3vh;
+            }
+            .shotby{
+                margin-top:2vh;
+                font-size:1.25vh;
+                color:#ACACAC;
+                font-family:Baskervville;
+                text-align:center;
+                margin-left:1vh;
+                letter-spacing:0.2vh;
+            }
+            .line{
+                width:90%;
+                height:0.75px;
+                background:rgb(101, 101, 101);
+                margin-bottom:2vh;
+                margin-top:1vh; 
+                z-index:8;
+            }
+            .standardimgviewer{
+                width:100%;
+                height:100vh;
+                margin-bottom:60vh;
+                display:flex;
+                flex-wrap:wrap;
+                justify-content:center;
+                align-items:center;
+            }
+            .standardimgviewer img{
+                width:60vh;
+                height:40vh;
+                cursor:pointer;
+                margin:1vh;
+                object-fit: cover;
+                opacity:0.7;
+                filter:saturate(0);
+                transition-duration:0.3s;
+            }
+            .standardimgviewer img:hover{
+                transition-duration:0.3s;
+                opacity:1;
+                filter:none;
+            }
+            .caj1{
+                width:22.5%;
+                height:100%;
+                display:flex;
+                flex-direction:column;
+                justify-content:center;
+                align-items:left;
+            }
+            .cajetantitle{
+                color:#EEEEEE;
+                font-family:Bebas Neue;
+                font-size:40vh;
+                text-align:left;
+            }
+            .cajpara{
+                color:#D8D7D7;
+                font-family:Baskervville;
+                font-style:italic;
+                font-size:2.75vh;
+                margin-top:-5vh;
+                margin-left:1vh;
+            }
+            .cajpun{
+                color:#D8D7D7;
+                font-family:Baskervville;
+                font-style:italic;
+                margin-top:2vh;
+                font-size:1.5vh;
+                margin-left:1vh;
+            }
+            .cajetanbreaker{
+                filter:saturate(0);
+                width:72.5vh;
+                height:25vw;
+                object-fit:cover;
+                cursor:pointer;
+                margin-top:7.5vh;
+                transition-duration:0.5s;
+                transform:rotate(90deg);
+                margin-left:-5vh;
+            }
+            .cajetanbreaker:hover{
+                filter:none;
+                transition-duration:0.5s;
+            }
+            .smalgaltext{
+                color:#D8D7D7;
+                font-family:Bebas neue;
+                margin-top:1vh;
+                font-size:3vh;
+            }
+            .galine{
+                background:#535252;
+                width:95%;
+                height:0.1vh;
+                margin-top:1vh;
+                border-radius:100vh;
+            }
+            .smallgallery{
+                display:flex;
+                flex-direction:row;
+                align-items:center;
+                justify-content:center;
+            }
+            .smallgallery img{
+                width:30%;
+                margin:1vh;
+                height:25.5vh;
+                filter:saturate(0);
+                cursor:pointer;
+                object-fit:cover;
+                transition-duration:0.5s;
+            }
+            .smallgallery img:hover{
+                filter:none;
+                transition-duration:0.5s;
+            }
+            .ag1{
+                display:flex;
+                flex-direction:column;
+                justify-content:center;
+                align-items:center;
+                width:30%;
+                height:100%;
+            }
+            .ag1 img{
+                filter:saturate(0);
+                cursor:pointer;
+                width:100%;
+                height:30%;
+                object-fit:cover;
+                transition-duration:0.5s;
+                margin-top:5vh;
+            }
+            .ag1 img:hover{
+                filter:none;
+                transition-duration:0.5s;
+            }
+            .ag2{
+                display:flex;
+                flex-direction:column;
+                justify-content:center;
+                align-items:center;
+                width:30%;
+                height:100%;
+            }
+            .ag2 img{
+                filter:saturate(0);
+                cursor:pointer;
+                width:100%;
+                height:65%;
+                object-fit:cover;
+                transition-duration:0.5s;
+                margin-top:5vh;
+            }
+            .ag2 img:hover{
+                filter:none;
+                transition-duration:0.5s;
+            }
+            .al{
+                width:40%;
+                height:100%;
+                margin:2vh;
+                cursor:pointer;
+                object-fit:cover;
+                border-radius:0vh;
+                transition-duration:0.5s;
+            }
+            .al:hover{
+                border-radius:5vh;
+                transition-duration:0.5s;
+            }
+            .alimgcont{
+                display:flex;
+                flex-direction:row;
+                justify-content:center;
+                align-items:center;
+                width:100%;
+                height:44%;
+                margin-top:3vh;
+            }
+            .line1{
+                width:82.5%;
+                height:0.75px;
+                background:rgb(54, 54, 54);
+                margin-top:1vh; 
+                z-index:8;
+            }
+            .one1{
+                display:flex;
+                flex-direction:column;
+                justify-content:center;
+                align-items:center;
+                width:25%;
+                height:70vh;
+                margin:5vh;
+            }
+            .beach{
+                width:100%;
+                height:100vh;
+                overflow-x:none;
+                overflow-y:scroll;
+            }
+            .beach img{
+                filter:saturate(0);
+                width:100%;
+                height:auto;
+                object-fit:cover;
+                transition-duration:0.5s;
+            }
+            .beach img:hover{
+                filter:none;
+                transition-duration:0.5s;
+            }
+            .titlevert{
+                color:#EEEEEE;
+                font-family:bebas neue;
+                font-size:15vh;
+            }
+            .qztxt{
+                color:white;
+                font-family:bebas neue;
+                font-size:8vh;
+            }
+            .hrd{
+                margin-left:2vh;
+                background:white;
+                border-radius:2vh;
+                width:17.5vh;
+                height:6.5vh;
+                display:flex;
+                justify-content: center;
+                align-items:center;
+            }
+            .rad{
+                color:white;
+                font-family:bebas neue;
+                font-size:3.5vh;
+                margin-left:1.5vh;
+            }
+            .qimg{
+                width:45%;
+                height:70%;
+                cursor:pointer;
+                margin-top:10vh;
+                object-fit:cover;
+                filter:saturate(0);
+                transition-duration:0.5s;
+            }
+            .qimg:hover{
+                filter:none;
+                transition-duration:0.5s;
+            }
+                        .phaseonefooter{
+                background:#100f0f;
+                width:100%;
+                height:70vh;
+                display:flex;
+                flex-direction:row;
+                justify-content:center;
+                align-items:center;
+            }
+            .phaseonecreds{
+                font-family:bebas neue;
+                color:#464646;
+                background:#141414;
+                width:100%;
+                height:12.5vh;
+                text-align:center;
+                display:flex;
+                justify-content:center;
+                align-items:center;
+                letter-spacing:2vh;
+                font-size:2vh;
+            }
+            .footer1{
+                display:flex;
+                flex-direction:column;
+                align-items:left;
+                justify-content:center;
+            }
+            .foothead1{
+                font-family:bebas neue;
+                font-size:12.5vh;
+                color:white;
+            }
+            .footpara1{
+                color:#ACACAC;
+                margin-top:5vh;
+                font-size:4vh;
+                font-family:bebas neue;
+                width:70vh;
+            }
+            .foothead2{
+                color:white;
+                font-family:bebas neue;
+                font-size:6vh;
+                outline:none;
+                background:none;
+                border:none;
+                cursor:pointer;
+                text-align:left;
+            }
+            .footpara2{
+                text-align:left;
+                background:none;
+                font-size:3vh;
+                width:30vh;
+                height:6.5vh;
+                font-family:bebas neue;
+                color:#ACACAC;
+                outline:none;
+                border:none;
+                cursor:pointer;
+            }
+            .pag1{
+                display:flex;
+                width: 100%;
+                height:100%;
+                justify-content:center;
+                align-items:center;
+            }
+            .pag2{
+                display:none;
+                flex-direction:column;
+                justify-content:center;
+                align-items:center;
+            }
+            .keys{
+                height:40vh;
+                width:auto;
+                margin-top:5vh;
+                filter:saturate(0);
+                transition-duration:0.5s;
+            }
+            .keys:hover{
+                filter:none;
+                transition-duration:0.5s;
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="intronav">
+            <div class="navfiller"></div>
+            <button class="intronavbtn" onclick="Home()">HOME</button>
+            <div style="margin:40px;font-size:2.3vh;z-index:5;opacity:0.8;">REMINISCENCE</div>
+            <button class="intronavbtn">GRAD</button>
+        </nav>
+        <div class="introsection">
+            <img src="./GOA/image-12.png" class="centralimg" style="margin-top:-5vh;">
+            <div class="filterup"></div>
+            <a href="./GOA/image-12.png" class='downloadbtn' download="image-12.png">
+                DOWNLOAD FOR WALLPAPER
+            </a>
+        </div>
+        <div class="introsection">
+            <img src="./GOA/image-24.png" class="maintrainimg">
+            <div class="traininfo">
+                <div class="trainblock">
+                    <div class="trainheader">TRAINS BOARDED</div>
+                    <div class="traincontent">2 TRAINS</div>
+                </div>
+                <div class="trainblock">
+                    <div class="trainheader">DISTANCE TRAVELLED</div>
+                    <div class="traincontent">1,042 KMS</div>
+                </div>
+                <div class="trainblock">
+                    <div class="trainheader">1-WAY TRAVEL TIME</div>
+                    <div class="traincontent">22 HOURS</div>
+                </div>
+            </div>
+        </div>
+        <div class="introsection" style="height:330vh;">
+            <div class="traingalleryheader">TRAIN GALLERY</div>
+            <div class="layer1">
+                <img src="./GOA/TRAINRIDE/thaneesh.jpg" class="layer1img">
+                <img src="./GOA/TRAINRIDE/nethra.jpg" style='margin-left:5vh;margin-right:5vh;' class="layer1img">
+                <img src="./GOA/TRAINRIDE/akhil.jpg" class="layer1img">
+            </div>
+            <div class="layer2">
+                <img src="./GOA/TRAINRIDE/topview.jpg" class="layer2img">
+                <div class="layer21">
+                    <img src="./GOA/TRAINRIDE/pragyasruthi.jpg" class="layer21img" style="margin-bottom:5vh;">
+                    <img src="./GOA/TRAINRIDE/padmapragya.jpg" class="layer21img">
+                </div>
+            </div>
+            <div class="layer1" style="margin-top:5vh;">
+                <img src="./GOA/TRAINRIDE/shrutis.jpg" class="layer1img">
+                <img src="./GOA/TRAINRIDE/arnavkavin.jpg" style='margin-left:5vh;margin-right:5vh;' class="layer1img">
+                <img src="./GOA/TRAINRIDE/akhiroke.jpg" class="layer1img">
+            </div>
+            <div class="layer1" style="margin-top:5vh;">
+                <img src="./GOA/TRAINRIDE/bedstuff.jpg" class="layer1img">
+                <img src="./GOA/TRAINRIDE/quadruple.jpg" style='margin-left:5vh;margin-right:5vh;' class="layer1img">
+                <img src="./GOA/TRAINRIDE/mridika.jpg" class="layer1img">
+            </div>
+            <img src="./GOA/TRAINRIDE/all.jpg" class="allofthem">
+            <div class="layer1" style="margin-top:5vh;">
+                <img src="./GOA/TRAINRIDE/besties.jpg" class="layer1img">
+                <img src="./GOA/TRAINRIDE/cardgames.jpg" style='margin-left:5vh;margin-right:5vh;' class="layer1img">
+                <img src="./GOA/TRAINRIDE/others.jpg" class="layer1img">
+            </div>
+            <div class="layer1" style="margin-top:5vh;">
+                <img src="./GOA/TRAINRIDE/DSC03922.JPG" class="layer1img">
+                <img src="./GOA/TRAINRIDE/DSC03944.JPG" style='margin-left:5vh;margin-right:5vh;' class="layer1img">
+                <img src="./GOA/TRAINRIDE/DSC03950.JPG" class="layer1img">
+            </div>
+        </div>
+        <div class="introsection" style="margin-top:20vh;">
+            <img src="./GOA/image-16.png" class="mansionmainimg">
+        </div>
+        <div class="introsection" style="margin-top:10vh;">
+            <img src="./GOA/image-17.png" class="centralimg">
+        </div>
+        <div class="introsection" style="flex-direction:row;margin-top:15vh;">
+            <div style="display:flex;flex-direction:row;justify-content:center;align-items:center;">
+                <div class="linehoriz"></div>
+                <div class="horiz">
+                    <span class="word">Inside</span>
+                    <span class="word">The</span>
+                    <span class="word">Mansion</span>
+                </div>
+            </div>
+            <div style="display:flex;flex-direction:column;">
+                <div class="l1">
+                    <img src="./GOA/MANSION/GP010204.jpg" class="l1img">
+                    <img src="./GOA/MANSION/GP010206.jpg" style='margin-left:2vh;margin-right:2vh;' class="l1img">
+                    <img src="./GOA/MANSION/GP010213.jpg" class="l1img">
+                </div>
+                <div class="l2">
+                    <img src="./GOA/MANSION/GP010208.jpg" class="l2img">
+                    <div style="display:flex;flex-direction:column;margin-left:2vh;margin-right:2vh;">
+                        <img src="./GOA/MANSION/GP010210.jpg" style='margin-bottom:2vh;' class="l21img">
+                        <img src="./GOA/MANSION/DSCN4608.jpg" class="l21img">  
+                    </div>
+                    <img src="./GOA/MANSION/DSCN0055.jpg" class="l2img">
+                </div>
+            </div>
+        </div>
+        <div class="videoholder" style="margin-top: 15vh; margin-bottom: 15vh;margin-left:2vh;">
+            <div class="hoyvidcontainer">
+                <video class="hoyvid" id="hoysalavideo" controls>
+                    <source src="./GOA/TAKES/bdayceleb.MOV" type="video/mp4">
+                </video>
+            </div>
+            <div class="playlist">
+                <div class="playlisttitle">PLAYLIST (6)</div>
+                <div class="playlisttitle" style="font-size:3vh;text-align:center;letter-spacing:0;color:#ACACAC;">CLICK ON VIDEO THUMBNAIL TO PLAY</div>
+                <div class="hoyvids" style="overflow-x:hidden;" id="hoyvidscont">
+                    <div class="line"></div>
+                    <div class="hoyvidformat">
+                        <video class="hoythumb" onclick="playthisvid(this)">
+                            <source src="./GOA/TAKES/bdayceleb.MOV" type="video/mp4">
+                        </video>
+                        <div style="display:flex;flex-direction:column;width:40%;">
+                            <div class="vidtext1">Birthday Celebrations</div>
+                            <div class="shotby">SHOT BY ARNAV</div>
+                        </div>
+                    </div>
+                    <div class="line"></div>
+                    <div class="hoyvidformat">
+                        <video class="hoythumb" onclick="playthisvid(this)">
+                            <source src="./GOA/TAKES/clapsong.MOV" type="video/mp4">
+                        </video>
+                        <div style="display:flex;flex-direction:column;width:40%;">
+                            <div class="vidtext1">Song 1</div>
+                            <div class="shotby">SHOT BY ARNAV</div>
+                        </div>
+                    </div>
+                    <div class="line"></div>
+                    <div class="hoyvidformat">
+                        <video class="hoythumb" onclick="playthisvid(this)">
+                            <source src="./GOA/TAKES/danceround.MOV" type="video/mp4">
+                        </video>
+                        <div style="display:flex;flex-direction:column;width:40%;">
+                            <div class="vidtext1">Dance</div>
+                            <div class="shotby">SHOT BY ARNAV</div>
+                        </div>
+                    </div>
+                    <div class="line"></div>
+                    <div class="hoyvidformat">
+                        <video class="hoythumb" onclick="playthisvid(this)">
+                            <source src="./GOA/TAKES/g20dinner.MOV" type="video/mp4">
+                        </video>
+                        <div style="display:flex;flex-direction:column;width:40%;">
+                            <div class="vidtext1">G20 Summit Dinner Room</div>
+                            <div class="shotby">SHOT BY ARNAV</div>
+                        </div>
+                    </div>
+                    <div class="line"></div>
+                    <div class="hoyvidformat">
+                        <video class="hoythumb" onclick="playthisvid(this)">
+                            <source src="./GOA/TAKES/LALALA.mov" type="video/mp4">
+                        </video>
+                        <div style="display:flex;flex-direction:column;width:40%;">
+                            <div class="vidtext1">Song 2</div>
+                            <div class="shotby">SHOT BY ARNAV</div>
+                        </div>
+                    </div>
+                    <div class="line"></div>
+                    <div class="hoyvidformat">
+                        <video class="hoythumb" onclick="playthisvid(this)">
+                            <source src="./GOA/TAKES/SINGINGLESSON.mov" type="video/mp4">
+                        </video>
+                        <div style="display:flex;flex-direction:column;width:40%;">
+                            <div class="vidtext1">Singing Attempts</div>
+                            <div class="shotby">SHOT BY ARNAV</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="introsection">
+            <img src="./GOA/image.png" class="mansionmainimg">
+        </div>
+        <div class="introsection" style="margin-top:10vh;">
+            <img src="./GOA/goachitra.png" class="centralimg">
+        </div>
+        <div style="display:flex;justify-content:center;align-items:center;flex-direction:column;margin-top:15vh;">
+            <div style="color:white;font-size:5vh;text-align:center;font-family:bebas neue;">INSIDE THE MUSEUM</div>
+            <div class="standardimgviewer" style="margin-top:2.5vh;">
+                <img src="./GOA/MUSEUM/DSC03995.jpg">
+                <img src="./GOA/MUSEUM/DSC04009.jpg">
+                <img src="./GOA/MUSEUM/DSC04020.jpg">
+                <img src="./GOA/MUSEUM/DSC04022.jpg">
+                <img src="./GOA/MUSEUM/DSC04023.jpg">
+                <img src="./GOA/MUSEUM/DSC04029.jpg">
+            </div>
+        </div>
+        <div class="introsection">
+            <img src="./GOA/cajetan.png" class="centralimg" style="filter:saturate(0);">
+        </div>
+        <div class="introsection" style="flex-direction:row;">
+            <div class="caj1">
+                <div class="cajetantitle">CAJ</div>
+                <p class="cajpara">St. Cajetan Church, also known as the Church of Divine Providence, is a church of the Roman Catholic Archdiocese of Goa and Daman located in Old Goa. The church was completed in 1661 and is part of the World Heritage Site, Churches and convents of Goa.</p>
+                <div class="cajpun">COPY PASTED FROM WIKIPEDIA</div>
+            </div>
+            <img src="./GOA/Cajetan/GP010449.JPG" class="cajetanbreaker">
+            <div class="caj1" style="width:35%;margin-left:-10vh;align-items:center;">
+                <div class="cajetantitle">ETAN</div>
+                <div class="smalgaltext">SMALL GALLERY</div>
+                <div class="galine"></div>
+                <div class="smallgallery">
+                    <img src="./GOA/Cajetan/GP010456.jpg">
+                    <img src="./GOA/Cajetan/DSCN0217.jpg">
+                    <img src="./GOA/Cajetan/GP010464.jpg">
+                </div>
+            </div>
+        </div>
+        <div style="display:flex;justify-content:center;align-items:center;width:100%;height:30%;">
+            <img src="./GOA/Cajetan/DSCN0213.jpg" style="filter:saturate(0);width:89%;height:55vh;object-fit:cover;">
+        </div>
+        <div class="introsection" style="height:120vh;margin-top:10vh;">
+            <img src="./GOA/aguada.png" class="centralimg" style="height:120vh;filter:brightness(0.7);">
+        </div>
+        <div class="introsection" style="flex-direction:row;">
+            <div class="ag1">
+                <img src="./GOA/AGUADA/DSCN0304.JPG">
+                <img src="./GOA/AGUADA/DSCN0321.JPG">
+            </div>
+            <div class="ag2" style="margin-left:3.5vh;">
+                <img src="./GOA/AGUADA/DSCN0299.JPG">
+            </div>
+            <div class="ag1" style="margin-left:3.5vh;">
+                <img src="./GOA/AGUADA/DSCN0315.JPG">
+                <img src="./GOA/AGUADA/DSCN0328.JPG">
+            </div>
+        </div>
+        <div style="color:rgb(103, 103, 103);font-size:2vh;font-style:italic;font-family:baskervville;margin-left:5vh;margin-top:-5vh;">Why are there no male pictures in these folders...</div>
+        <div class="introsection" style="margin-top:10vh;">
+            <img src="./GOA/surla.png" class="mansionmainimg" style="height:90vh;">
+        </div>
+        <div class="introsection">
+            <div style="color:rgb(119, 119, 119);font-size:5vh;text-align:center;font-family:bebas neue;">ALTERNATIVES</div>
+            <div class="line1"></div>
+            <div class="alimgcont">
+                <img src="./GOA/males.png" class="al">
+                <img src="./GOA/females.png" class="al">
+            </div>
+        </div>
+        <div class="introsection">
+            <img src="./GOA/enroute.png" class="centralimg">
+        </div>
+        <div class="introsection" style="margin-top:5vh;flex-direction:row;">
+            <div class="one1">
+                <div class="titlevert">BEACH</div>
+                <div class="beach">
+                    <img src="./GOA/BEACH/GP010562.jpg">
+                    <img src="./GOA/BEACH/GP010566.jpg">
+                    <img src="./GOA/BEACH/GP010567.jpg">
+                    <img src="./GOA/BEACH/GP010570.jpg">
+                    <img src="./GOA/BEACH/GP010571.jpg">
+                    <img src="./GOA/BEACH/GP010590.jpg">
+                    <img src="./GOA/BEACH/GP010595.jpg">
+                    <img src="./GOA/BEACH/GP010609.jpg">
+                    <img src="./GOA/BEACH/GP010612.jpg">
+                    <img src="./GOA/BEACH/GP010616.jpg">
+                    <img src="./GOA/BEACH/GP010726.jpg">
+                </div>
+            </div>
+            <div class="one1">
+                <div class="titlevert">BOAT</div>
+                <div class="beach">
+                    <img src="./GOA/BOAT/DSCN0226.jpg">
+                    <img src="./GOA/BOAT/DSCN0220.jpg">
+                    <img src="./GOA/BOAT/GP010487.jpg">
+                    <img src="./GOA/BOAT/GP010492.jpg">
+                    <img src="./GOA/BOAT/GP010497.jpg">
+                    <img src="./GOA/BOAT/GP010512.jpg">
+                    <img src="./GOA/BOAT/GP010516.jpg">
+                    <img src="./GOA/BOAT/GP010518.jpg">
+                    <img src="./GOA/BOAT/GP010523.jpg">
+                </div>
+            </div>
+            <div class="one1">
+                <div class="titlevert">DINE-INS</div>
+                <div class="beach">
+                    <img src="./GOA/DINE/DSCN0233.jpg">
+                    <img src="./GOA/DINE/DSCN0240.jpg">
+                    <img src="./GOA/DINE/GP010141.jpg">
+                    <img src="./GOA/DINE/GP010143.jpg">
+                    <img src="./GOA/DINE/GP010146.jpg">
+                    <img src="./GOA/DINE/GP010147.jpg">
+                    <img src="./GOA/BOAT/GP010527.jpg">
+                    <img src="./GOA/BOAT/GP010535.jpg">
+                    <img src="./GOA/BOAT/GP010542.jpg">
+                </div>
+            </div>
+        </div>
+        <div class="introsection" style="flex-direction:row;justify-content: center;align-items: center;">
+            <div id="pg1" class="pag1">
+                <img src="./GOA/QUIZ/DSC03978.JPG" class="qimg">
+                <div style="display:flex;flex-direction:column;align-items:left;justify-content:center;margin-left:10vh;">
+                    <div style="display:flex;flex-direction:row;justify-content:center;align-items:center;">
+                        <div class="qztxt">IDENTIFY</div>
+                        <div class="hrd">
+                            <div style="font-family:bebas neue;font-size:2.75vh;">HARD EDITION</div>
+                        </div>
+                    </div>
+                    <div class="qztxt" style="font-size:13.5vh;">THE PLACE</div>
+                    <div class="qztxt" style="font-size:3.25vh;margin-left:1vh;margin-top:2.5vh;"><span id="qno">1</span>/4</div>
+
+                    <div style="display:flex;flex-direction:row;align-items:center;justify-content:left;margin-top:3vh;">
+                        <input type="radio" id="op1" name="place" value="1">
+                        <label class="rad" id="o1">Figuereido Mansion</label>
+                    </div>
+
+                    <div style="display:flex;flex-direction:row;align-items:center;justify-content:left;margin-top:3vh;">
+                        <input type="radio" id="op2" name="place" value="2">
+                        <label class="rad" id="o2">St. Cajetan</label>
+                    </div>
+
+                    <div style="display:flex;flex-direction:row;align-items:center;justify-content:left;margin-top:3vh;">
+                        <input type="radio" id="op3" name="place" value="3">
+                        <label class="rad" id="o3">Aguada Fort</label>
+                    </div>
+
+                    <div style="display:flex;flex-direction:row;align-items:center;justify-content:left;margin-top:3vh;">
+                        <input type="radio" id="op4" name="place" value="4">
+                        <label class="rad" id="o4">Goa Chitra Museum</label>
+                    </div>
+
+                    <button class="downloadbtn" style="font-size:2.75vh;" onclick="Sbmit()">SUBMIT</button>
+                </div>
+            </div>
+            <div id="pg2" class="pag2">
+                <div style="color:white;font-family:bebas neue;font-size:10vh;"><span id="score">0</span>/4</div>
+                <div style="color:white;font-family:bebas neue;font-size:5vh;margin-top:10vh;">ANSWER KEY</div>
+                <img src="./GOA/QUIZ/key.png" class="keys">
+            </div>
+        </div>
+
+        <footer class="phaseonefooter">
+            <div class="footer1">
+                <div class="foothead1">Reminiscence.</div>
+                <div class="footpara1">APPRECIATE YOUR VISIT. WISH YOU LUCK IN YOUR COLLEGE LIFE AND THEREAFTER.</div>
+            </div>
+            <div class="footer1" style="margin-left:10vh;">
+                <button class="foothead2">Home</button>
+                <br>
+                <button class="footpara2">The Train Ride</button>
+                <button class="footpara2">The Figuereido Mansion</button>
+                <button class="footpara2">Goa Chitra Museum</button>
+            </div>
+            <div class="footer1" style="margin-left:10vh;">
+                <button class="foothead2">Graduation</button>
+                <br>
+                <button class="footpara2">St. Cajetan</button>
+                <button class="footpara2">Aguada Fort</button>
+                <button class="footpara2">Tambdi Surla Rainforest</button>
+            </div>
+        </footer>
+        <footer class="phaseonecreds">DATE OF COMPLETION : 12TH JUNE 2026</footer>
+
+        <script>
+            const hoyvid = document.getElementById('hoysalavideo');
+            var qnumber = 0;
+            var correct = 0;
+            function Next(){
+                if (qnumber==1){
+                    document.getElementsByClassName('qimg')[0].src="./QUIZ/DSC04131.JPG";
+                    document.getElementById('o1').innerText="st. basilica of bom jesus";
+                    document.getElementById('o3').innerText="Goa Chitra Museum";
+                    document.getElementById('o4').innerText="Aguada Fort";
+                    document.getElementById('qno').innerText="2";
+                }
+                else if (qnumber==2){
+                    document.getElementsByClassName('qimg')[0].src="./QUIZ/GP010666.JPG";
+                    document.getElementById('o1').innerText="Aguada fort";
+                    document.getElementById('o2').innerText="Goa Chitra Museum";
+                    document.getElementById('o3').innerText="St. Cajetan";
+                    document.getElementById('o4').innerText="st. basilica of bom jesus";
+                    document.getElementById('qno').innerText="3";
+                }
+                else if (qnumber==3){
+                    document.getElementsByClassName('qimg')[0].src="./QUIZ/IMG_3691.JPG";
+                    document.getElementById('o1').innerText="St. Cajetan";
+                    document.getElementById('o2').innerText="St. Basillica of Bom Jesus";
+                    document.getElementById('o3').innerText="Aguada fort";
+                    document.getElementById('o4').innerText="Goa Chitra Museum";
+                    document.getElementById('qno').innerText="4";
+                }
+            }
+            function Sbmit(){
+                var choice = document.querySelector('input[name="place"]:checked')?.value;
+                console.log(choice);
+                if (choice!=undefined){
+                    qnumber+=1;
+                    Next();
+                    if (qnumber==1){
+                        if (choice=="1"){
+                            correct+=1;
+                        }
+                    }
+                    else if (qnumber==2){
+                        if (choice=="2"){
+                            correct+=1;
+                        }
+                    }
+                    else if (qnumber==3){
+                        if (choice=="3"){
+                            correct+=1;
+                        }
+                    }
+                    else if (qnumber==4){
+                        if (choice=="4"){
+                            correct+=1;
+                        }
+                        document.getElementById("pg1").style.display="none";
+                        document.getElementById("pg2").style.display="flex";
+                        document.getElementById("score").innerText=correct;
+                    }
+                }
+                else{
+                    alert("Why are you submitting without answering?");
+                }  
+                document.getElementById("op1").checked = false; 
+                document.getElementById("op2").checked = false; 
+                document.getElementById("op3").checked = false; 
+                document.getElementById("op4").checked = false; 
+            }
+            function playthisvid(vid){s
+                hoyvid.src=vid.children[0].src;
+                hoyvid.load();
+                hoyvid.play();
+            }
+        </script>
+    </body>
+</html>
