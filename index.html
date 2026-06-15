@@ -785,7 +785,7 @@
             <div class="navfiller"></div>
             <button class="intronavbtn" onclick="Home()">HOME</button>
             <div style="margin:40px;font-size:2.3vh;z-index:5;opacity:0.8;">REMINISCENCE</div>
-            <button class="intronavbtn">GRAD</button>
+            <button class="intronavbtn" onclick="Grad()">GRAD</button>
         </nav>
         <div class="introsection">
             <img src="./GOA/image-12.png" class="centralimg" style="margin-top:-5vh;">
@@ -864,7 +864,7 @@
             </div>
             <div style="display:flex;flex-direction:column;">
                 <div class="l1">
-                    <img src="./GOA/Mansion/GP010204.jpg" class="l1img">
+                    <img src="./GOA/Mansion/" class="l1img">
                     <img src="./GOA/Mansion/GP010206.jpg" style='margin-left:2vh;margin-right:2vh;' class="l1img">
                     <img src="./GOA/Mansion/GP010213.jpg" class="l1img">
                 </div>
@@ -881,7 +881,7 @@
         <div class="videoholder" style="margin-top: 15vh; margin-bottom: 15vh;margin-left:2vh;">
             <div class="hoyvidcontainer">
                 <video class="hoyvid" id="hoysalavideo" controls>
-                    <source src="./GOA/TAKES/bdayceleb.mov" type="video/mp4">
+                    <source src="./GOA/TAKES/bdayceleb.MOV" type="video/mp4">
                 </video>
             </div>
             <div class="playlist">
@@ -891,7 +891,7 @@
                     <div class="line"></div>
                     <div class="hoyvidformat">
                         <video class="hoythumb" onclick="playthisvid(this)">
-                            <source src="./GOA/TAKES/bdayceleb.mov" type="video/mp4">
+                            <source src="./GOA/TAKES/bdayceleb.MOV" type="video/mp4">
                         </video>
                         <div style="display:flex;flex-direction:column;width:40%;">
                             <div class="vidtext1">Birthday Celebrations</div>
@@ -901,7 +901,7 @@
                     <div class="line"></div>
                     <div class="hoyvidformat">
                         <video class="hoythumb" onclick="playthisvid(this)">
-                            <source src="./GOA/TAKES/clapsong.mov" type="video/mp4">
+                            <source src="./GOA/TAKES/clapsong.MOV" type="video/mp4">
                         </video>
                         <div style="display:flex;flex-direction:column;width:40%;">
                             <div class="vidtext1">Song 1</div>
@@ -911,7 +911,7 @@
                     <div class="line"></div>
                     <div class="hoyvidformat">
                         <video class="hoythumb" onclick="playthisvid(this)">
-                            <source src="./GOA/TAKES/danceround.mov" type="video/mp4">
+                            <source src="./GOA/TAKES/danceround.MOV" type="video/mp4">
                         </video>
                         <div style="display:flex;flex-direction:column;width:40%;">
                             <div class="vidtext1">Dance</div>
@@ -921,7 +921,7 @@
                     <div class="line"></div>
                     <div class="hoyvidformat">
                         <video class="hoythumb" onclick="playthisvid(this)">
-                            <source src="./GOA/TAKES/g20dinner.mov" type="video/mp4">
+                            <source src="./GOA/TAKES/g20dinner.MOV" type="video/mp4">
                         </video>
                         <div style="display:flex;flex-direction:column;width:40%;">
                             <div class="vidtext1">G20 Summit Dinner Room</div>
@@ -977,7 +977,7 @@
                 <p class="cajpara">St. Cajetan Church, also known as the Church of Divine Providence, is a church of the Roman Catholic Archdiocese of Goa and Daman located in Old Goa. The church was completed in 1661 and is part of the World Heritage Site, Churches and convents of Goa.</p>
                 <div class="cajpun">COPY PASTED FROM WIKIPEDIA</div>
             </div>
-            <img src="./GOA/Cajetan/GP010449.jpg" class="cajetanbreaker">
+            <img src="./GOA/Cajetan/GP010449.JPG" class="cajetanbreaker">
             <div class="caj1" style="width:35%;margin-left:-10vh;align-items:center;">
                 <div class="cajetantitle">ETAN</div>
                 <div class="smalgaltext">SMALL GALLERY</div>
@@ -1071,7 +1071,7 @@
         </div>
         <div class="introsection" style="flex-direction:row;justify-content: center;align-items: center;">
             <div id="pg1" class="pag1">
-                <img src="./GOA/QUIZ/DSC03978.jpg" class="qimg">
+                <img src="./GOA/QUIZ/DSC03978.JPG" class="qimg">
                 <div style="display:flex;flex-direction:column;align-items:left;justify-content:center;margin-left:10vh;">
                     <div style="display:flex;flex-direction:row;justify-content:center;align-items:center;">
                         <div class="qztxt">IDENTIFY</div>
@@ -1113,9 +1113,9 @@
         </div>
 
         <footer class="phaseonefooter">
-            <div class="footer1">?
+            <div class="footer1">
                 <div class="foothead1">Reminiscence.</div>
-                <div class="footpara1">WHERE ARE THE GUYS' PICTURES IN THESE FOLDERS BRO?</div>
+                <div class="footpara1">APPRECIATE YOUR VISIT. WISH YOU LUCK IN YOUR COLLEGE LIFE AND THEREAFTER.</div>
             </div>
             <div class="footer1" style="margin-left:10vh;">
                 <button class="foothead2">Home</button>
@@ -1135,19 +1135,26 @@
         <footer class="phaseonecreds">DATE OF COMPLETION : 12TH JUNE 2026</footer>
 
         <script>
+            function Home() {
+                window.location.href = "https://reminiscencebvs26.github.io/reminiscence-batch26/";
+            }
+
+            function Grad() {
+                window.location.href = "https://reminiscencebvs26.github.io/graduation/";
+            }
             const hoyvid = document.getElementById('hoysalavideo');
             var qnumber = 0;
             var correct = 0;
             function Next(){
                 if (qnumber==1){
-                    document.getElementsByClassName('qimg')[0].src="./GOA//QUIZ/DSC04131.jpg";
+                    document.getElementsByClassName('qimg')[0].src="./QUIZ/DSC04131.JPG";
                     document.getElementById('o1').innerText="st. basilica of bom jesus";
                     document.getElementById('o3').innerText="Goa Chitra Museum";
                     document.getElementById('o4').innerText="Aguada Fort";
                     document.getElementById('qno').innerText="2";
                 }
                 else if (qnumber==2){
-                    document.getElementsByClassName('qimg')[0].src="./GOA/QUIZ/GP010666.jpg";
+                    document.getElementsByClassName('qimg')[0].src="./QUIZ/GP010666.JPG";
                     document.getElementById('o1').innerText="Aguada fort";
                     document.getElementById('o2').innerText="Goa Chitra Museum";
                     document.getElementById('o3').innerText="St. Cajetan";
@@ -1155,7 +1162,7 @@
                     document.getElementById('qno').innerText="3";
                 }
                 else if (qnumber==3){
-                    document.getElementsByClassName('qimg')[0].src="./GOA/QUIZ/IMG_3691.jpg";
+                    document.getElementsByClassName('qimg')[0].src="./QUIZ/IMG_3691.JPG";
                     document.getElementById('o1').innerText="St. Cajetan";
                     document.getElementById('o2').innerText="St. Basillica of Bom Jesus";
                     document.getElementById('o3').innerText="Aguada fort";
@@ -1201,7 +1208,7 @@
                 document.getElementById("op3").checked = false; 
                 document.getElementById("op4").checked = false; 
             }
-            function playthisvid(vid){
+            function playthisvid(vid){s
                 hoyvid.src=vid.children[0].src;
                 hoyvid.load();
                 hoyvid.play();
